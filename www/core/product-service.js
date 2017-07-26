@@ -3,7 +3,7 @@
 
 angular.module('reqService', ['ngResource']).factory('Home', ['$resource',
     function ($resource, data) {
-        return $resource('http://server.dev/projecttest/index.php', {}, {
+        return $resource('http://176.9.220.131/index.php', {}, {
             query: {
                 method: 'POST',
                 params: data,
