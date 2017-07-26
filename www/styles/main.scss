@@ -8,6 +8,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 *{
+  box-sizing: border-box;
+  max-width: 100%;
   font-family: Sahel;
 }
 
@@ -76,8 +78,66 @@ body {
   }
 }
 
+.navbar-header {
+  background: #00daff;
+  padding: 0 10px;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+
+  a.navbar-brand {
+    float: right;
+    color: white !important;
+  }
+}
+
+.header{
+  margin: 0;
+  padding: 0;
+}
+
+.list-container{
+  padding: 20px 15px 0;
+  width: 100%;
+  display: inline-block;
+}
+
+button.btn-custom {
+  margin: 11px;
+  background: none;
+  color: white !important;
+  font-size: 22px;
+  padding-left: 0;
+  outline: none !important;
+  box-shadow: none !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 18px;
+}
+hr {
+  border-top: 1px solid #808080;
+}
+
+
+.col-10 {
+  width: 95%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.col-2 {
+  width: 90%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-group {
+  display: inline-block;
+  width: 49%;
+}
+
 .custom-list{
-  padding: 10px;
+  padding: 0;
 
   .custom-list-item{
     padding: 10px;
@@ -98,12 +158,12 @@ body {
         width: 100px;
         text-align: center;
         padding: 0;
-        border: 1px solid #9e9e9e;
+        border-left: 1px solid #9e9e9e;
       }
 
       &.row-details{
         padding-top: 5px;
-        font-size: 16px;
+        font-size: 18px;
         position: relative;
         width: calc(100% - 104px);
 
@@ -111,6 +171,7 @@ body {
           position: absolute;
           bottom: 5px;
           left: 15px;
+          font-size: 14px;
         }
       }
     }

@@ -1,140 +1,321 @@
 <div>
-  <div class="header">
-    <div class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search_form">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" class="btn btn-custom collapsed" data-toggle="collapse"
+                            data-target="#search_form">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                    <button type="button" class="btn btn-custom" data-toggle="modal"
+                            data-target="#newHome">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
 
-          <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
--->
-          <a class="navbar-brand" href="#">Amlak</a>
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+          -->
+                    <a class="navbar-brand" href="#">دفترچه املاک</a>
+                </div>
+
+                <!--<div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#/">Home</a></li>
+                    <li><a ng-href="#/about">About</a></li>
+                    <li><a ng-href="#/">Contact</a></li>
+                  </ul>
+                </div>-->
+            </div>
         </div>
-
-        <!--<div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Home</a></li>
-            <li><a ng-href="#/about">About</a></li>
-            <li><a ng-href="#/">Contact</a></li>
-          </ul>
-        </div>-->
-      </div>
     </div>
-  </div>
 
-  <div layout="row" layout-align="end start">
-    <div style="width: 100%" layout="row">
-      <form id="search_form" class="collapse fade form-group" role="dialog" name="search_form" autocomplete="false">
-        <div class="modal-dialog">
-          <div layout="row" class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title">
-                <span>جست و جو</span>
+    <div layout="row" layout-align="end start">
+        <div style="width: 100%" layout="row">
+            <form id="search_form" class="collapse fade" role="dialog" name="search_form"
+                  autocomplete="false">
+                <div class="modal-dialog">
+                    <div layout="row" class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">
+                                <span>جست و جو</span>
 
-                <button style="" type="button" class="close pull-left" data-toggle="collapse"
-                        aria-label="Close" ng-click="searchArr = []"
-                        data-target="#search_form">
-                  <i class="glyphicon glyphicon-remove"></i>
-                </button>
-              </h3>
-            </div>
-            <div class="modal-body">
-              <div ng-repeat="(c, value) in options.columns.head"
-                   ng-if="cellNames[c]['searchable']"
-                   class="ng-scope">
-                <label for="{{c.replace(' ', '-')}}-s" class="">{{cellNames[c]["name"]}}</label>
-                <input type="text" id="{{c.replace(' ', '-')}}-s"
-                       name="{{c.replace(' ', '-')}}-s"
-                       class="form-control"
-                       aria-invalid="false" ng-model="searchArr[c]">
-                <div class="md-errors-spacer"></div>
-                <!--ng-change="products.searchTable(c)"-->
-                <br>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="text-center">
-                <button style="" type="button" class="btn btn-danger" data-toggle="collapse"
-                        ng-click="searchArr = []"
-                        data-target="#search_form">
-                  <span>لغو</span>
-                </button>
-                <!--<button type="submit" class="btn btn-success">اعمال</button>-->
-              </div>
-            </div>
-          </div>
+                                <button style="" type="button" class="close pull-left" data-toggle="collapse"
+                                        aria-label="Close" ng-click="searchArr = []"
+                                        data-target="#search_form">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            <div ng-repeat="(c, value) in options.columns.head"
+                                 ng-if="cellNames[c]['searchable']"
+                                 class="ng-scope form-group">
+                                <label for="{{c.replace(' ', '-')}}-s" class="col-2 col-form-label">{{cellNames[c]["name"]}}</label>
+                                <div class="col-10">
+                                    <input type="text" id="{{c.replace(' ', '-')}}-s"
+                                           name="{{c.replace(' ', '-')}}-s"
+                                           class="form-control"
+                                           aria-invalid="false" ng-model="searchArr[c]">
+                                </div>
+                                <div class="md-errors-spacer"></div>
+                                <!--ng-change="products.searchTable(c)"-->
+                                <br>
+                            </div>
+                            <div class="modal-title">
+                                <h3 style="margin-bottom: 0;">سایر جزئیات</h3>
+                            </div>
+                            <div>
+                                <div class="md-block form-group">
+                                    <label for="age" class="col-2 col-form-label">سن بنا</label>
+                                    <div class="col-10">
+                                        <input tabindex="1" class="form-control" type="text" name="age" id="age" ng-model="searchArr['age']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="parking" class="col-2 col-form-label">پارکینک</label>
+                                    <div class="col-10">
+                                        <input tabindex="2" class="form-control" type="text" name="parking" id="parking" ng-model="searchArr['parking']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="lift" class="col-2 col-form-label">آسانسور</label>
+                                    <div class="col-10">
+                                        <input tabindex="3" class="form-control" type="text" name="lift" id="lift" ng-model="searchArr['lift']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="store" class="col-2 col-form-label">انباری</label>
+                                    <div class="col-10">
+                                        <input tabindex="4" class="form-control" type="text" name="store" id="store" ng-model="searchArr['store']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="floor" class="col-2 col-form-label">طبقه</label>
+                                    <div class="col-10">
+                                        <input tabindex="5" class="form-control" type="text" name="floor" id="floor" ng-model="searchArr['floor']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="allfloor" class="col-2 col-form-label">تعداد طبقات ساختمان</label>
+                                    <div class="col-10">
+                                        <input tabindex="6" class="form-control" type="text" name="allfloor" id="allfloor" ng-model="searchArr['allfloor']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="allunit" class="col-2 col-form-label">تعداد واحد ساختمان</label>
+                                    <div class="col-10">
+                                        <input tabindex="7" class="form-control" type="text" name="allunit" id="allunit" ng-model="searchArr['allunit']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block form-group">
+                                    <label for="bedroom" class="col-2 col-form-label">تعداد خواب</label>
+                                    <div class="col-10">
+                                        <input tabindex="8" class="form-control" type="text" name="bedroom" id="bedroom" ng-model="searchArr['bedroom']" required/>
+                                    </div>
+                                </div>
+                                <div class="md-block">
+                                    <label for="desc" class="col-2 col-form-label">سایر توضیحات</label>
+                                    <div class="col-10">
+                                        <textarea class="form-control" type="text" name="name" id="desc" ng-model="searchArr['name']" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="text-center">
+                                <button style="" type="button" class="btn btn-danger" data-toggle="collapse"
+                                        ng-click="searchArr = []"
+                                        data-target="#search_form">
+                                    <span>لغو</span>
+                                </button>
+                                <!--<button type="submit" class="btn btn-success">اعمال</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 20px;display: inline-block;">
+                </div>
+            </form>
         </div>
-        <div style="margin: 20px;display: inline-block;">
+        <div layout="row" class="action-panel" layout-align="end start">
         </div>
-      </form>
     </div>
-    <div layout="row" class="action-panel" layout-align="end start">
-    </div>
-  </div>
-  <div class="row" dir="rtl">
-    <div class="container">
-      <ul class="list-group custom-list">
-        <li class="list-group-item custom-list-item"
-            ng-repeat="row in options.columns.body | filter: searchArr | orderBy: TableOrder"
-            ng-click="products.go('/' + row.id)">
-          <div class="align-center img-cont">
-            <h1>{{row.id}}</h1>
-            <span>متر</span>
-          </div>
+    <div class="" dir="rtl">
+        <div class="list-container">
+            <ul class="list-group custom-list">
+                <li class="list-group-item custom-list-item"
+                    ng-repeat="row in options.columns.body | filter: searchArr | orderBy: TableOrder"
+                    ng-click="Homes.go('/' + row.id)">
+                    <div class="align-center img-cont">
+                        <h1>{{row.area}}</h1>
+                        <span>متر</span>
+                    </div>
 
-          <div class="align-center row-details">
-            <div>
-              <span>{{row.p_name}}</span>
-            </div>
-            <div>
-              <span>{{row.p_desc}}</span>
-            </div>
-            <div>
-              <span>{{row.p_price}}</span>
-            </div>
-          </div>
-        </li>
-      </ul>
+                    <div class="align-center row-details">
+                        <div>
+                            <span>{{row.name}}</span>
+                        </div>
+                        <!--<div>
+                            <span>{{row.desc}}</span>
+                        </div>-->
+                        <div>
+                            <span>{{row.price}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 
 
-      <table class="table table-bordered">
-        <thead class="md-primary">
-        <tr>
-          <th style="outline: none" ng-repeat="(column, value) in options.columns.head"
-              ng-click="products.ChangeOrder(column, this)"
-              ng-class="(TableOrder.includes(column))?'md-active md-sort':'md-sort'">
-            <span>{{cellNames[column]["name"]}}</span>
-          </th>
-          <th>
-            <span></span>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr
-          ng-repeat="row in options.columns.body | filter: searchArr | orderBy: TableOrder"
-          ng-if="options.columns.body.length > 0 && row.show != false && row.id"
-        >
-          <!--ng-show="products.PagingProduct($index)"-->
-          <td
-            ng-repeat="cell in row"
-          >
-            <span>{{cell}}</span>
-          </td>
-          <td style="">
+            <!--<table class="table table-bordered">
+                <thead class="md-primary">
+                <tr>
+                    <th style="outline: none" ng-repeat="(column, value) in options.columns.head"
+                        ng-click="Homes.ChangeOrder(column, this)"
+                        ng-class="(TableOrder.includes(column))?'md-active md-sort':'md-sort'">
+                        <span>{{cellNames[column]["name"]}}</span>
+                    </th>
+                    <th>
+                        <span></span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                        ng-repeat="row in options.columns.body | filter: searchArr | orderBy: TableOrder"
+                        ng-if="options.columns.body.length > 0 && row.show != false && row.id"
+                >
+                    &lt;!&ndash;ng-show="products.PagingProduct($index)"&ndash;&gt;
+                    <td
+                            ng-repeat="cell in row"
+                    >
+                        <span>{{cell}}</span>
+                    </td>
+                    <td style="">
                         <span>
                         </span>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>-->
+        </div>
     </div>
-  </div>
+    <div id="newHome" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div id="dialog-container" class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">
+                        <span>افزودن</span>
+                        <button style="" type="button" class="close pull-left" data-toggle="modal"
+                                aria-label="Close"
+                                data-target="#newHome">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </h3>
+                </div>
+                <div id="dialogContent_95" class="modal-body">
+                    <form id="newHome_from" name="newHome_from">
+                        <div class="md-block form-group">
+                            <label for="name" class="col-2 col-form-label">نام</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="name" id="name" ng-model="newPro.name" required/>
+                            </div>
+                        </div>
+                        <div class="md-block form-group">
+                            <label for="price" class="col-2 col-form-label">قیمت</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="firstName" id="price" ng-model="newPro.price" required/>
+                            </div>
+                        </div>
+                        <div class="md-block form-group">
+                            <label for="area" class="col-2 col-form-label">متراژ</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="firstName" id="area" ng-model="newPro.area"
+                                       required/>
+                            </div>
+                        </div>
+                        <div class="modal-title">
+                            <h3 style="margin-bottom: -10px;">سایر جزئیات</h3>
+                        </div>
+                        <div>
+                            <div class="md-block form-group">
+                                <label for="age" class="col-2 col-form-label">سن بنا</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="age" id="age" ng-model="newPro.age" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="parking" class="col-2 col-form-label">پارکینک</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="parking" id="parking" ng-model="newPro.parking" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="lift" class="col-2 col-form-label">آسانسور</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="lift" id="lift" ng-model="newPro.lift" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="store" class="col-2 col-form-label">انباری</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="store" id="store" ng-model="newPro.store" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="floor" class="col-2 col-form-label">طبقه</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="floor" id="floor" ng-model="newPro.floor" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="allfloor" class="col-2 col-form-label">تعداد طبقات ساختمان</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="allfloor" id="allfloor" ng-model="newPro.allfloor" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="allunit" class="col-2 col-form-label">تعداد واحد ساختمان</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="allunit" id="allunit" ng-model="newPro.allunit" required/>
+                                </div>
+                            </div>
+                            <div class="md-block form-group">
+                                <label for="bedroom" class="col-2 col-form-label">تعداد خواب</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" name="bedroom" id="bedroom" ng-model="newPro.bedroom" required/>
+                                </div>
+                            </div>
+                            <div class="md-block">
+                                <label for="desc" class="col-2 col-form-label">سایر توضیحات</label>
+                                <div class="col-10">
+                                    <textarea class="form-control" type="text" name="name" id="desc" ng-model="newPro.name" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button style="" type="button" class="btn btn-danger" data-toggle="modal"
+                                ng-click="newPro = {id: ''}"
+                                data-target="#newHome">
+                            <span class="ng-binding ng-scope">لغو</span>
+                        </button>
+                        <button class="btn btn-success"
+                                type="button"
+                                data-toggle="modal"
+                                ng-click="Homes.AddHome()"
+                                ng-disabled="newHome_from.$invalid" disabled="disabled">
+                            <span class="ng-binding ng-scope">افزودن</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

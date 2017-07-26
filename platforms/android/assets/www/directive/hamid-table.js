@@ -1,5 +1,5 @@
 angular.module('amlakApp')
-  .directive("hamidTable", ['Product', '$location', function(Product, $location) {
+  .directive("hamidTable", ['Home', '$location', function(Home, $location) {
     return {
       restrict: 'EA',
       replace: true,
@@ -19,39 +19,39 @@ angular.module('amlakApp')
             name: 'id',
             searchable: false
           },
-          p_name: {
+          name: {
             name: 'نام',
             searchable: true
           },
-          p_desc: {
+          area: {
             name: 'توضیحات',
             searchable: true
           },
-          p_price: {
+          price: {
             name: 'قیمت',
             searchable: true
           }
         };
         $scope.options = [];
         $scope.options.columns = [];
-        $scope.options.productPaging = [5, 25, 50, 100];
+        $scope.options.HomePaging = [5, 25, 50, 100];
         $scope.options.ProCurrentPage = 1;
-        $scope.options.productPrinted = 0;
+        $scope.options.HomePrinted = 0;
 
-        $scope.products = {
+        $scope.Homes = {
           /**
            * @return {boolean}
            */
-          PagingProduct: function($index) {
-            return ($index >= (($scope.options.ProCurrentPage * $scope.options.productPaging[0]) - $scope.options.productPaging[0])
-              && $index < ($scope.options.ProCurrentPage * $scope.options.productPaging[0]));
+          PagingHome: function($index) {
+            return ($index >= (($scope.options.ProCurrentPage * $scope.options.HomePaging[0]) - $scope.options.HomePaging[0])
+              && $index < ($scope.options.ProCurrentPage * $scope.options.HomePaging[0]));
           },
           ShowUpdateDialog: function(row) {
             $scope.AddNew = row.id;
             $scope.newPro.id = row.id;
-            $scope.newPro.p_name = row.p_name;
-            $scope.newPro.p_desc = row.p_desc;
-            $scope.newPro.p_price = row.p_price;
+            $scope.newPro.name = row.name;
+            $scope.newPro.area = row.area;
+            $scope.newPro.price = row.price;
           },
           ChangeOrder: function(OrderBy) {
             if (OrderBy === $scope.TableOrder) {
@@ -74,14 +74,14 @@ angular.module('amlakApp')
             });
             return ret;
           },
-          RemoveProduct: function(id) {
+          RemoveHome: function(id) {
             var data = {
               data: {
-                action: 'RemoveProduct',
+                action: 'RemoveHome',
                 id: id
               }
             };
-            Product.query(data, function(succ) {
+            Home.query(data, function(succ) {
               if (succ.length > 0) {
                 for (var i = 0; i < $scope.options.columns.body.length; i++) {
                   if ($scope.options.columns.body[i] && $scope.options.columns.body[i]["id"] === id) {
@@ -93,14 +93,14 @@ angular.module('amlakApp')
               }
             });
           },
-          AddProduct: function() {
+          AddHome: function() {
             var data = {
               data: {
-                action: 'AddProduct',
-                product: $scope.newPro
+                action: 'AddHome',
+                home: $scope.newPro
               }
             };
-            Product.query(data, function(succ) {
+            Home.query(data, function(succ) {
               if (succ.length > 0) {
                 $scope.newPro.id = parseInt(succ[0]);
                 $scope.options.columns.body.push($scope.newPro);
@@ -111,30 +111,30 @@ angular.module('amlakApp')
               }
             });
           },
-          GetProducts: function() {
+          GetList: function() {
             var data = {
               "data": {
-                "action": 'GetProducts'
+                "action": 'GetList'
               }
             };
-            Product.query(data, function(products) {
-              $scope.options.columns.body = products;
+            Home.query(data, function(Homes) {
+              $scope.options.columns.body = Homes;
               for (var i = 0; i < $scope.options.columns.body.length; i++) {
                 $scope.options.columns.body[i]["id"] = parseInt($scope.options.columns.body[i]["id"]);
-                $scope.options.columns.body[i]["p_price"] = parseInt($scope.options.columns.body[i]["p_price"]);
+                // $scope.options.columns.body[i]["price"] = parseInt($scope.options.columns.body[i]["price"]);
               }
 
               $scope.options.columns.head = angular.copy($scope.options.columns.body[0]);
             });
           },
-          UpdateProduct: function() {
+          UpdateHome: function() {
             var data = {
               data: {
-                action: 'UpdateProduct',
-                product: $scope.newPro
+                action: 'UpdateHome',
+                home: $scope.newPro
               }
             };
-            Product.query(data, function(succ) {
+            Home.query(data, function(succ) {
               if (succ.length > 0) {
                 for (var i = 0; i < $scope.options.columns.body.length; i++) {
                   if ($scope.options.columns.body[i]["id"] === $scope.newPro.id) {
@@ -161,7 +161,7 @@ angular.module('amlakApp')
           }
         };
 
-        $scope.products.GetProducts();
+        $scope.Homes.GetList();
       }
     };
   }]);

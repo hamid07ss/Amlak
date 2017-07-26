@@ -1,7 +1,7 @@
 
 
 
-angular.module('reqService', ['ngResource']).factory('Product', ['$resource',
+angular.module('reqService', ['ngResource']).factory('Home', ['$resource',
     function ($resource, data) {
         return $resource('http://server.dev/projecttest/index.php', {}, {
             query: {
