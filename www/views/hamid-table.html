@@ -1,0 +1,140 @@
+<div>
+  <div class="header">
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search_form">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+
+          <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+-->
+          <a class="navbar-brand" href="#">Amlak</a>
+        </div>
+
+        <!--<div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/">Home</a></li>
+            <li><a ng-href="#/about">About</a></li>
+            <li><a ng-href="#/">Contact</a></li>
+          </ul>
+        </div>-->
+      </div>
+    </div>
+  </div>
+
+  <div layout="row" layout-align="end start">
+    <div style="width: 100%" layout="row">
+      <form id="search_form" class="collapse fade form-group" role="dialog" name="search_form" autocomplete="false">
+        <div class="modal-dialog">
+          <div layout="row" class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">
+                <span>جست و جو</span>
+
+                <button style="" type="button" class="close pull-left" data-toggle="collapse"
+                        aria-label="Close" ng-click="searchArr = []"
+                        data-target="#search_form">
+                  <i class="glyphicon glyphicon-remove"></i>
+                </button>
+              </h3>
+            </div>
+            <div class="modal-body">
+              <div ng-repeat="(c, value) in options.columns.head"
+                   ng-if="cellNames[c]['searchable']"
+                   class="ng-scope">
+                <label for="{{c.replace(' ', '-')}}-s" class="">{{cellNames[c]["name"]}}</label>
+                <input type="text" id="{{c.replace(' ', '-')}}-s"
+                       name="{{c.replace(' ', '-')}}-s"
+                       class="form-control"
+                       aria-invalid="false" ng-model="searchArr[c]">
+                <div class="md-errors-spacer"></div>
+                <!--ng-change="products.searchTable(c)"-->
+                <br>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="text-center">
+                <button style="" type="button" class="btn btn-danger" data-toggle="collapse"
+                        ng-click="searchArr = []"
+                        data-target="#search_form">
+                  <span>لغو</span>
+                </button>
+                <!--<button type="submit" class="btn btn-success">اعمال</button>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin: 20px;display: inline-block;">
+        </div>
+      </form>
+    </div>
+    <div layout="row" class="action-panel" layout-align="end start">
+    </div>
+  </div>
+  <div class="row" dir="rtl">
+    <div class="container">
+      <ul class="list-group custom-list">
+        <li class="list-group-item custom-list-item"
+            ng-repeat="row in options.columns.body | filter: searchArr | orderBy: TableOrder"
+            ng-click="products.go('/' + row.id)">
+          <div class="align-center img-cont">
+            <h1>{{row.id}}</h1>
+            <span>متر</span>
+          </div>
+
+          <div class="align-center row-details">
+            <div>
+              <span>{{row.p_name}}</span>
+            </div>
+            <div>
+              <span>{{row.p_desc}}</span>
+            </div>
+            <div>
+              <span>{{row.p_price}}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+      <table class="table table-bordered">
+        <thead class="md-primary">
+        <tr>
+          <th style="outline: none" ng-repeat="(column, value) in options.columns.head"
+              ng-click="products.ChangeOrder(column, this)"
+              ng-class="(TableOrder.includes(column))?'md-active md-sort':'md-sort'">
+            <span>{{cellNames[column]["name"]}}</span>
+          </th>
+          <th>
+            <span></span>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          ng-repeat="row in options.columns.body | filter: searchArr | orderBy: TableOrder"
+          ng-if="options.columns.body.length > 0 && row.show != false && row.id"
+        >
+          <!--ng-show="products.PagingProduct($index)"-->
+          <td
+            ng-repeat="cell in row"
+          >
+            <span>{{cell}}</span>
+          </td>
+          <td style="">
+                        <span>
+                        </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
