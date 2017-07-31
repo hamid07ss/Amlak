@@ -2,202 +2,320 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-@font-face{
-  font-family: Sahel;
-  src: url('../fonts/Sahel.woff');
+@font-face {
+    font-family: Sahel;
+    src: url('../fonts/Sahel.woff');
 }
 
-*{
-  box-sizing: border-box;
-  max-width: 100%;
-  font-family: Sahel;
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+    font-family: Sahel;
 }
 
 .browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
 
 body {
-  padding: 0;
+    padding: 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
-
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
 
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+    /* Make the masthead heading the same height as the navigation */
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
+    }
 }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
-  margin: 30px 0;
+    margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
+    .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+    }
 }
 
 /* Supporting marketing content */
 .marketing {
-  margin: 40px 0;
+    margin: 40px 0;
 
-  p + h4 {
-    margin-top: 28px;
-  }
+    p + h4 {
+        margin-top: 28px;
+    }
+}
+
+ul[rn-carousel] {
+    li:before {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+
+.navbar-default {
+    border: 0;
+    margin: 0;
+}
+
+div#loading {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    text-align: center;
+    top: calc(50vh - 7%);
+    display: inline-block;
+
+
+    img {
+        width: 15%;
+    }
 }
 
 .navbar-header {
-  background: #00daff;
-  padding: 0 10px;
-  display: inline-block;
-  width: 100%;
-  text-align: left;
+    background: #00daff;
+    padding: 0 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
 
-  a.navbar-brand {
-    float: right;
-    color: white !important;
-  }
+    a.navbar-brand {
+        float: right;
+        color: white !important;
+    }
 }
 
-.header{
-  margin: 0;
-  padding: 0;
+ul[rn-carousel] > li > img {
+    max-width: 95%;
 }
 
-.list-container{
-  padding: 20px 15px 0;
-  width: 100%;
-  display: inline-block;
+.carousel-indicators.custom {
+    position: static;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    direction: ltr;
+
+    li {
+        border-color: #000;
+
+        &.active {
+            background-color: #000000;
+        }
+    }
+
+}
+
+#details {
+    ul {
+        padding: 0;
+        margin: 0;
+
+        li {
+            padding: 0 15px;
+            margin: 0 auto;
+            width: 90%;
+            list-style: none;
+
+            &:first-child {
+                border-bottom: 1px solid gray;
+                margin-bottom: 20px;
+            }
+
+            &:last-child {
+                border-top: 1px solid gray;
+                margin-top: 20px;
+                padding-top: 15px;
+            }
+
+            span {
+                font-size: 14px;
+            }
+            strong {
+                font-size: 16px;
+            }
+            p {
+                font-size: 14px;
+            }
+            h3{
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+div#try-again button {
+    display: inline-block;
+    border: 0;
+    background: rgba(255, 178, 60, 0.72);
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    padding: 4px 0;
+    color: #6d6b6b;
+
+    &:focus {
+        outline: none;
+    }
+
+    * {
+        vertical-align: middle;
+    }
+}
+
+.header {
+    margin: 0;
+    padding: 0;
+}
+
+.list-container {
+    padding: 5px 5px 0;
+    width: 100%;
+    display: inline-block;
+    background: #f1f1f1;
 }
 
 button.btn-custom {
-  margin: 11px;
-  background: none;
-  color: white !important;
-  font-size: 22px;
-  padding-left: 0;
-  outline: none !important;
-  box-shadow: none !important;
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: 18px;
-}
-hr {
-  border-top: 1px solid #808080;
+    margin: 11px;
+    background: none;
+    color: white !important;
+    font-size: 22px;
+    padding-left: 0;
+    outline: none !important;
+    box-shadow: none !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 18px;
 }
 
+hr {
+    border-top: 1px solid #808080;
+}
 
 .col-10 {
-  width: 95%;
-  display: inline-block;
-  vertical-align: middle;
+    width: 95%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .col-2 {
-  width: 90%;
-  display: inline-block;
-  vertical-align: middle;
+    width: 90%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .form-group {
-  display: inline-block;
-  width: 49%;
+    display: inline-block;
+    width: 49%;
 }
 
-.custom-list{
-  padding: 0;
+.custom-list {
+    padding: 0;
 
-  .custom-list-item{
-    padding: 10px;
-    height: 100px;
-    box-sizing: content-box;
-    border-color: #9e9e9e;
-    margin-bottom: 10px;
-
-    .align-center{
-      float: none;
-      display: inline-block;
-      vertical-align: middle;
-      box-sizing: border-box;
-      padding: 0 15px;
-      height: 100%;
-
-      &.img-cont{
-        width: 100px;
-        text-align: center;
+    .custom-list-item {
         padding: 0;
-        border-left: 1px solid #9e9e9e;
-      }
+        height: 100px;
+        box-sizing: content-box;
+        margin-bottom: 5px;
+        border-radius: 0;
+        border: 0;
 
-      &.row-details{
-        padding-top: 5px;
-        font-size: 18px;
-        position: relative;
-        width: calc(100% - 104px);
+        .align-center {
+            float: none;
+            display: inline-block;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding: 0 15px;
+            height: 100%;
 
-        &>div:last-child{
-          position: absolute;
-          bottom: 5px;
-          left: 15px;
-          font-size: 14px;
+            &.img-cont {
+                width: 25%;
+                text-align: left;
+                padding: 0;
+                float: left;
+            }
+
+            &.row-details {
+                padding: 10px 10px 0;
+                font-size: 12px;
+                position: relative;
+                width: 75%;
+
+                & > div {
+                    display: inline-block;
+                    text-align: right;
+                    width: 100%;
+                    vertical-align: top;
+                }
+
+                & > div:first-child {
+                    height: calc(100% - 40px);
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                & > div:last-child {
+                }
+            }
         }
-      }
     }
-  }
 }
-
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+    .container {
+        max-width: 730px;
+    }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
 }

@@ -6,10 +6,9 @@ angular.module('reqService', ['ngResource']).factory('Home', ['$resource',
         return $resource('http://176.9.220.131/index.php', {}, {
             query: {
                 method: 'POST',
-                params: data,
-                transformRequest: function (data) {
-                    return angular.toJson(data);
-                },
+                headers: {'Content-Type': undefined},
+                data: data,
+                transformRequest: angular.identity,
                 isArray: true
             }
         });

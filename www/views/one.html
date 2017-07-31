@@ -1,3 +1,57 @@
 <div>
-    hamid
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" class="btn btn-custom" ng-click="goBack()">
+                        <i class="glyphicon glyphicon-menu-left"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">دفترچه املاک</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loading" ng-hide="onData.options.details || onData.netError">
+        <img src="images/loading.gif" alt="">
+    </div>
+    <div style="padding: 20px 15px 0;">
+        <ul id="myCarousel" class="carousel slide image" rn-carousel data-ride="carousel"
+            rn-carousel-index="mycarouselIndex"
+            style="width:100%;height: 350px;">
+            <li
+                    ng-repeat="Image in onData.options['pictures']"
+                    class="text-center item">
+                <img style="max-height: 100%;" ng-src="{{onData.ServerAddress + Image}}"/>
+            </li>
+        </ul>
+        <ol class="carousel-indicators custom">
+            <li ng-repeat="Image in onData.options['pictures']" data-target="#myCarousel" data-slide-to="$index"
+                class="{{($index === mycarouselIndex)?'active':''}}"></li>
+        </ol>
+    </div>
+    <div id="details">
+        <ul ng-if="onData.options.details">
+            <li>
+                <h3><b>{{onData.options.details.name}}</b></h3>
+            </li>
+            <li ng-repeat="(key, detail) in onData.options.details"
+                ng-if="onData.options.keyNames.show[key]">
+                <span><strong>{{onData.options.keyNames[key].name}}: </strong></span>
+                <span>{{detail}}</span>
+            </li>
+            <li ng-repeat="(key, detail) in onData.options.more"
+                ng-if="onData.options.keyNames.show[key]">
+                <span><strong>{{onData.options.keyNames[key].name}}: </strong></span>
+                <span>{{detail}}</span>
+            </li>
+            <li>
+                <p>{{onData.options.more.desc}}</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
 </div>

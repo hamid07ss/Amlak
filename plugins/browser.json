@@ -9,6 +9,15 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.sarani.amlak"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.sarani.amlak"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.sarani.amlak"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.sarani.amlak"
         }
     },
     "dependent_plugins": {}

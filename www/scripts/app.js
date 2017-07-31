@@ -9,31 +9,34 @@
  * Main module of the application.
  */
 angular
-  .module('amlakApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'reqService'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        template: '<hamid-table></hamid-table>'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/:id', {
-        templateUrl: 'views/one.html'
-        // controller: 'oneCtrl',
-        // controllerAs: 'page'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    .module('amlakApp', [
+        'ngAnimate',
+        'angular-carousel',
+        'ngCookies',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch',
+        'base64',
+        'ngCordova',
+        'reqService'
+    ])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: './views/hamid-table.html'
+            })
+            .when('/about', {
+                templateUrl: 'views/about.html',
+                controller: 'AboutCtrl',
+                controllerAs: 'about'
+            })
+            .when('/OneHome', {
+                templateUrl: 'views/one.html',
+                controller: 'oneCtrl',
+                controllerAs: 'home'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
